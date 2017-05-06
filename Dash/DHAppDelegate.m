@@ -28,6 +28,8 @@
 //#import <HockeySDK/HockeySDK.h>
 #import "DHRemoteServer.h"
 #import "DHRemoteProtocol.h"
+#import "BaiduMobStat.h"
+#import "DHDeviceUtil.h"
 
 @implementation DHAppDelegate
 
@@ -53,6 +55,7 @@
         [[NSFileManager defaultManager] removeItemAtPath:[cacheDir stringByAppendingPathComponent:@"com.apple.nsurlsessiond/Downloads"] error:nil];
     }
     
+    
 //#ifndef DEBUG
 //    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"3b2036819813be1b22bb086f00eea499"];
 //    [[BITHockeyManager sharedHockeyManager].crashManager setCrashManagerStatus:BITCrashManagerStatusAutoSend];
@@ -62,6 +65,8 @@
     
 #ifdef DEBUG
     [self checkCommitHashes];
+#else
+    [self startBaiduMobStat];
 #endif
 //    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"Mozilla/5.0 (iPhone; CPU iPhone OS 10_10 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B411 Xcode/6.1.0", @"UserAgent", nil];
 //    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
@@ -86,6 +91,23 @@
     [DHRemoteServer sharedServer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clipboardChanged:) name:UIPasteboardChangedNotification object:nil];
     return YES;
+}
+
+
+
+/**
+ *  初始化百度统计SDK
+ */
+- (void)startBaiduMobStat {
+    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+    // 此处(startWithAppId之前)可以设置初始化的可选参数，具体有哪些参数，可详见BaiduMobStat.h文件，例如：
+    statTracker.shortAppVersion  = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    //    statTracker.enableDebugOn = YES;
+    [statTracker startWithAppId:@"0bf01c1f11"]; // 设置您在mtj网站上添加的app的appkey,此处AppId即为应用的appKey
+    // 其它事件
+    [statTracker logEvent:@"usermodelName" eventLabel:[DHDeviceUtil deviceModelName]];
+    [statTracker logEvent:@"systemVersion" eventLabel:[UIDevice currentDevice].systemVersion];
+    
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -221,7 +243,7 @@
     {
         return self._window;
     }
-    self._window = [[DHWindow alloc] init];
+    self._window = [[DHWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds] ];
     return self._window;
 }
 

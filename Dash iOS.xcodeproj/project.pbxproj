@@ -119,6 +119,15 @@
 		43FD2EFF19BB8D87007E594D /* DHDocsetBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FD2EFE19BB8D87007E594D /* DHDocsetBrowser.m */; };
 		43FD2F0219BB8D87007E594D /* DHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FD2F0119BB8D87007E594D /* DHWebViewController.m */; };
 		43FD2F0419BB8D87007E594D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43FD2F0319BB8D87007E594D /* Images.xcassets */; };
+		6DA657BD1EBA27900081812F /* DHDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA657BC1EBA27900081812F /* DHDeviceUtil.m */; };
+		6DCB09351EBD64A200CB6BEB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB09341EBD64A200CB6BEB /* Launch Screen.storyboard */; };
+		6DE2A7901EB41C1F00F946D9 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2A78F1EB41C1F00F946D9 /* libBaiduMobStat.a */; };
+		6DE2A7921EB41C7900F946D9 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2A7911EB41C7900F946D9 /* libc++.tbd */; };
+		6DE2A7941EB41C8300F946D9 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2A7931EB41C8300F946D9 /* libz.1.2.5.tbd */; };
+		6DE2A7961EB41C9100F946D9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2A7951EB41C9100F946D9 /* Security.framework */; };
+		6DE2A7981EB41C9A00F946D9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2A7971EB41C9A00F946D9 /* CoreLocation.framework */; };
+		6DE2A79A1EB41CA200F946D9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2A7991EB41CA200F946D9 /* SystemConfiguration.framework */; };
+		6DE2A79C1EB41CB700F946D9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE2A79B1EB41CB700F946D9 /* CoreTelephony.framework */; };
 		BBB3B8850811DF599E5B94B1 /* libPods-Dash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAAA490E87044F567A335E75 /* libPods-Dash.a */; };
 /* End PBXBuildFile section */
 
@@ -314,6 +323,17 @@
 		43FD2F0019BB8D87007E594D /* DHWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHWebViewController.h; sourceTree = "<group>"; };
 		43FD2F0119BB8D87007E594D /* DHWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHWebViewController.m; sourceTree = "<group>"; };
 		43FD2F0319BB8D87007E594D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6DA657BB1EBA27900081812F /* DHDeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHDeviceUtil.h; sourceTree = "<group>"; };
+		6DA657BC1EBA27900081812F /* DHDeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHDeviceUtil.m; sourceTree = "<group>"; };
+		6DCB09341EBD64A200CB6BEB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		6DE2A78E1EB41C1F00F946D9 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		6DE2A78F1EB41C1F00F946D9 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
+		6DE2A7911EB41C7900F946D9 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		6DE2A7931EB41C8300F946D9 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		6DE2A7951EB41C9100F946D9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		6DE2A7971EB41C9A00F946D9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6DE2A7991EB41CA200F946D9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6DE2A79B1EB41CB700F946D9 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8A903FC979556D0CD8EA207B /* Pods-Dash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dash.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dash/Pods-Dash.release.xcconfig"; sourceTree = "<group>"; };
 		BAAA490E87044F567A335E75 /* libPods-Dash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dash.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -323,7 +343,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DE2A79C1EB41CB700F946D9 /* CoreTelephony.framework in Frameworks */,
 				43BB043F19ED0B19000FBC0D /* JavaScriptCore.framework in Frameworks */,
+				6DE2A79A1EB41CA200F946D9 /* SystemConfiguration.framework in Frameworks */,
+				6DE2A7981EB41C9A00F946D9 /* CoreLocation.framework in Frameworks */,
+				6DE2A7961EB41C9100F946D9 /* Security.framework in Frameworks */,
+				6DE2A7941EB41C8300F946D9 /* libz.1.2.5.tbd in Frameworks */,
+				6DE2A7921EB41C7900F946D9 /* libc++.tbd in Frameworks */,
 				430C768D19E55E6E006F0DE0 /* MobileCoreServices.framework in Frameworks */,
 				437FE06819E2B4010022ADF4 /* WebKit.framework in Frameworks */,
 				43EE932A19CD079600FFF30C /* libarchive.a in Frameworks */,
@@ -331,6 +357,7 @@
 				4303A3C419C658B000A7CD85 /* libsqlite3.dylib in Frameworks */,
 				43FD2EE819BB8D87007E594D /* CoreGraphics.framework in Frameworks */,
 				43FD2EEA19BB8D87007E594D /* UIKit.framework in Frameworks */,
+				6DE2A7901EB41C1F00F946D9 /* libBaiduMobStat.a in Frameworks */,
 				43FD2EE619BB8D87007E594D /* Foundation.framework in Frameworks */,
 				BBB3B8850811DF599E5B94B1 /* libPods-Dash.a in Frameworks */,
 			);
@@ -586,6 +613,8 @@
 				43A356CA19FFCE4D0073D143 /* UIViewController+DHUtils.m */,
 				43DCAEB61A9C3C8500A28A95 /* NSData+DHUtils.h */,
 				43DCAEB71A9C3C8500A28A95 /* NSData+DHUtils.m */,
+				6DA657BB1EBA27900081812F /* DHDeviceUtil.h */,
+				6DA657BC1EBA27900081812F /* DHDeviceUtil.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -703,6 +732,7 @@
 		43BB044F19ED48B6000FBC0D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6DE2A78D1EB41C1F00F946D9 /* baidu_ios_api */,
 				436FDF5719FE57C600553931 /* Fonts */,
 				433BDDB11DC3C3AC00B0B145 /* Settings.bundle */,
 				43BB045019ED48BD000FBC0D /* ClassRuby.png */,
@@ -727,6 +757,7 @@
 		43FD2ED919BB8D87007E594D = {
 			isa = PBXGroup;
 			children = (
+				6DCB09341EBD64A200CB6BEB /* Launch Screen.storyboard */,
 				43FD2EEB19BB8D87007E594D /* Dash */,
 				43FD2EE419BB8D87007E594D /* Frameworks */,
 				43FD2EE319BB8D87007E594D /* Products */,
@@ -745,6 +776,12 @@
 		43FD2EE419BB8D87007E594D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DE2A79B1EB41CB700F946D9 /* CoreTelephony.framework */,
+				6DE2A7991EB41CA200F946D9 /* SystemConfiguration.framework */,
+				6DE2A7971EB41C9A00F946D9 /* CoreLocation.framework */,
+				6DE2A7951EB41C9100F946D9 /* Security.framework */,
+				6DE2A7931EB41C8300F946D9 /* libz.1.2.5.tbd */,
+				6DE2A7911EB41C7900F946D9 /* libc++.tbd */,
 				43BB043E19ED0B19000FBC0D /* JavaScriptCore.framework */,
 				430C768C19E55E6E006F0DE0 /* MobileCoreServices.framework */,
 				437FE06719E2B4010022ADF4 /* WebKit.framework */,
@@ -800,6 +837,15 @@
 				8A903FC979556D0CD8EA207B /* Pods-Dash.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6DE2A78D1EB41C1F00F946D9 /* baidu_ios_api */ = {
+			isa = PBXGroup;
+			children = (
+				6DE2A78E1EB41C1F00F946D9 /* BaiduMobStat.h */,
+				6DE2A78F1EB41C1F00F946D9 /* libBaiduMobStat.a */,
+			);
+			path = baidu_ios_api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -891,6 +937,7 @@
 				436FDF6119FE57CD00553931 /* SourceCodePro-Light.ttf in Resources */,
 				43F70AC019CBBD20000849C8 /* Defaults.plist in Resources */,
 				43BB045619ED48BD000FBC0D /* ModuleRuby.png in Resources */,
+				6DCB09351EBD64A200CB6BEB /* Launch Screen.storyboard in Resources */,
 				43AC700119E4530400E0DB43 /* home.html in Resources */,
 				437B6F8919EBCBCA003023E8 /* style.css in Resources */,
 				437AD41719E26C9500BA0FE4 /* DHBrowserCell.xib in Resources */,
@@ -1060,6 +1107,7 @@
 				434A77DC1BAE590C00CCF84B /* DHSplitViewController.m in Sources */,
 				43418C281A0B63B00014EFB6 /* DHWebView.m in Sources */,
 				439051F619E67D840083A55E /* DHBrowserTableViewCell.m in Sources */,
+				6DA657BD1EBA27900081812F /* DHDeviceUtil.m in Sources */,
 				43A6D9C919E0D69700780BC8 /* DHDocsetManager.m in Sources */,
 				437699A719D8FD3D008B37F4 /* DHTransferFeed.m in Sources */,
 				438F622419D5E81A00AF71BC /* NSFileManager+DHUtils.m in Sources */,
@@ -1230,6 +1278,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dash",
+					"$(PROJECT_DIR)/Dash/baidu_ios_api",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = cc.ihtc.dash;
@@ -1266,6 +1315,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dash",
+					"$(PROJECT_DIR)/Dash/baidu_ios_api",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cc.ihtc.dash;
 				PRODUCT_NAME = "$(TARGET_NAME)";

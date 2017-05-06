@@ -1,0 +1,108 @@
+
+/* Class = "UISearchBar"; placeholder = "Find cheat sheets to download"; ObjectID = "0Tx-yl-ZpH"; */
+"0Tx-yl-ZpH.placeholder" = "Find cheat sheets to download";
+
+/* Class = "UINavigationItem"; title = "Types"; ObjectID = "1DN-dq-KAm"; */
+"1DN-dq-KAm.title" = "Types";
+
+/* Class = "UIBarButtonItem"; title = "Update"; ObjectID = "20V-ZH-ehJ"; */
+"20V-ZH-ehJ.title" = "Update";
+
+/* Class = "UIBarButtonItem"; title = "Get Dash for macOS"; ObjectID = "2rJ-qk-tNm"; */
+"2rJ-qk-tNm.title" = "Get Dash for macOS";
+
+/* Class = "UITableViewSection"; headerTitle = "Download"; ObjectID = "5ll-Jq-5KZ"; */
+"5ll-Jq-5KZ.headerTitle" = "Download";
+
+/* Class = "UITableViewController"; title = "Docset Browser"; ObjectID = "7bK-jq-Zjz"; */
+"7bK-jq-Zjz.title" = "Docset Browser";
+
+/* Class = "UINavigationItem"; title = "User Contributed Docsets"; ObjectID = "7o6-m1-emM"; */
+"7o6-m1-emM.title" = "User Contributed Docsets";
+
+/* Class = "UITableViewController"; title = "Type Browser"; ObjectID = "9Rs-Yt-R1b"; */
+"9Rs-Yt-R1b.title" = "Type Browser";
+
+/* Class = "UINavigationItem"; title = "Main Docsets"; ObjectID = "9ic-mO-5WP"; */
+"9ic-mO-5WP.title" = "Main Docsets";
+
+/* Class = "UINavigationItem"; title = "Nested Result"; ObjectID = "BLr-sT-VsR"; */
+"BLr-sT-VsR.title" = "Nested Result";
+
+/* Class = "UITableViewSection"; footerTitle = "Dash will notify you when docset updates are available.             "; ObjectID = "DSC-i5-noV"; */
+"DSC-i5-noV.footerTitle" = "Dash will notify you when docset updates are available.             ";
+
+/* Class = "UITableViewSection"; headerTitle = "Update settings"; ObjectID = "DSC-i5-noV"; */
+"DSC-i5-noV.headerTitle" = "Update settings";
+
+/* Class = "UINavigationItem"; title = "Cheat Sheets"; ObjectID = "EeG-gR-3NH"; */
+"EeG-gR-3NH.title" = "Cheat Sheets";
+
+/* Class = "UIViewController"; title = "WebView"; ObjectID = "JEX-9P-axG"; */
+"JEX-9P-axG.title" = "WebView";
+
+/* Class = "UILabel"; text = "Automatic Updates"; ObjectID = "L5q-QS-QhJ"; */
+"L5q-QS-QhJ.text" = "Automatic Updates";
+
+/* Class = "UINavigationItem"; title = "WebView"; ObjectID = "LO3-Fn-NLm"; */
+"LO3-Fn-NLm.title" = "WebView";
+
+/* Class = "UITableViewController"; title = "Type Browser"; ObjectID = "MG8-DW-Fv2"; */
+"MG8-DW-Fv2.title" = "Type Browser";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "OIB-dx-J0z"; */
+"OIB-dx-J0z.title" = "Settings";
+
+/* Class = "UIBarButtonItem"; title = "Settings"; ObjectID = "UFq-dX-jiF"; */
+"UFq-dX-jiF.title" = "Settings";
+
+/* Class = "UILabel"; text = "Main Docsets"; ObjectID = "Ug3-nq-xyc"; */
+"Ug3-nq-xyc.text" = "Main Docsets";
+
+/* Class = "UINavigationItem"; title = "Entries"; ObjectID = "Un0-xc-bRD"; */
+"Un0-xc-bRD.title" = "Entries";
+
+/* Class = "UITableViewController"; title = "Table of Contents"; ObjectID = "Wkz-GU-NNB"; */
+"Wkz-GU-NNB.title" = "Table of Contents";
+
+/* Class = "UINavigationItem"; title = "Docsets"; ObjectID = "Zdf-7t-Un8"; */
+"Zdf-7t-Un8.title" = "Docsets";
+
+/* Class = "UITableViewController"; title = "Remote Browser"; ObjectID = "fAU-6P-OeP"; */
+"fAU-6P-OeP.title" = "Remote Browser";
+
+/* Class = "UISearchBar"; placeholder = "Find docsets to download"; ObjectID = "frS-D7-CD1"; */
+"frS-D7-CD1.placeholder" = "Find docsets to download";
+
+/* Class = "UILabel"; text = "User Contributed Docsets"; ObjectID = "g0J-MY-Gyr"; */
+"g0J-MY-Gyr.text" = "User Contributed Docsets";
+
+/* Class = "UIBarButtonItem"; title = "Refresh"; ObjectID = "g6k-h1-fQg"; */
+"g6k-h1-fQg.title" = "Refresh";
+
+/* Class = "UITableViewSection"; headerTitle = "Other Sources"; ObjectID = "geA-nh-aJW"; */
+"geA-nh-aJW.headerTitle" = "Other Sources";
+
+/* Class = "UISearchBar"; placeholder = "Find docsets to download"; ObjectID = "ibw-RZ-LKe"; */
+"ibw-RZ-LKe.placeholder" = "Find docsets to download";
+
+/* Class = "UIBarButtonItem"; title = "Update"; ObjectID = "nLQ-uE-WPX"; */
+"nLQ-uE-WPX.title" = "Update";
+
+/* Class = "UINavigationItem"; title = "Remotes"; ObjectID = "q55-40-w46"; */
+"q55-40-w46.title" = "Remotes";
+
+/* Class = "UIBarButtonItem"; title = "Update"; ObjectID = "rwQ-iw-bgR"; */
+"rwQ-iw-bgR.title" = "Update";
+
+/* Class = "UILabel"; text = "Cheat Sheets"; ObjectID = "tCo-zC-KEK"; */
+"tCo-zC-KEK.text" = "Cheat Sheets";
+
+/* Class = "UILabel"; text = "Transfer Docsets"; ObjectID = "tH7-qh-OUH"; */
+"tH7-qh-OUH.text" = "Transfer Docsets";
+
+/* Class = "UINavigationItem"; title = "Transfer Docsets"; ObjectID = "w85-3G-Wi2"; */
+"w85-3G-Wi2.title" = "Transfer Docsets";
+
+/* Class = "UINavigationItem"; title = "Table of Contents"; ObjectID = "zNW-Es-vkB"; */
+"zNW-Es-vkB.title" = "Table of Contents";

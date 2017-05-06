@@ -17,6 +17,8 @@
 
 #import "DHAppDelegate.h"
 #import "DHDocsetDownloader.h"
+#import "DHUserRepo.h"
+#import "DHCheatRepo.h"
 #import "DHDocsetTransferrer.h"
 #import "DHDocsetManager.h"
 #import "DHTarixProtocol.h"
@@ -88,6 +90,8 @@
 //    self.window.tintColor = [UIColor purpleColor];
     [DHDocsetDownloader sharedDownloader];
     [DHDocsetTransferrer sharedTransferrer];
+    [DHUserRepo sharedUserRepo];
+    [DHCheatRepo sharedCheatRepo];
     [DHRemoteServer sharedServer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clipboardChanged:) name:UIPasteboardChangedNotification object:nil];
     return YES;
@@ -122,10 +126,30 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)actualURL sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:DHPrepareForURLSearch object:nil];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DHPerformURLSearch object:[actualURL absoluteString]];
-    });
+    if([[actualURL absoluteString] hasCaseInsensitivePrefix:@"dash://"] || [[actualURL absoluteString] hasCaseInsensitivePrefix:@"dash-plugin://"])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DHPrepareForURLSearch object:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DHPerformURLSearch object:[actualURL absoluteString]];
+        });
+    }
+    else
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            NSError *regexError;
+            NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"Inbox/.+[\\.docset]$" options:0 error:&regexError];
+            NSArray *matches;
+            if (regexError) {
+                NSLog(@"%@", regexError.localizedDescription);
+            }else{
+                matches = [regex matchesInString:[actualURL absoluteString] options:0 range:NSMakeRange(0, [actualURL absoluteString].length)];
+            }
+            if (matches.count) {
+                [self moveInboxContentsToDocuments];
+            }
+        });
+    }
     return YES;
 }
 
@@ -161,6 +185,14 @@
         if(![[DHDocsetDownloader sharedDownloader] alertIfUpdatesAreScheduled])
         {
             [[DHDocsetDownloader sharedDownloader] backgroundCheckForUpdatesIfNeeded];
+            if(![[DHUserRepo sharedUserRepo] alertIfUpdatesAreScheduled])
+            {
+                [[DHUserRepo sharedUserRepo] backgroundCheckForUpdatesIfNeeded];
+                if(![[DHCheatRepo sharedCheatRepo] alertIfUpdatesAreScheduled])
+                {
+                    [[DHCheatRepo sharedCheatRepo] backgroundCheckForUpdatesIfNeeded];
+                }
+            }
         }
     }
 }
@@ -181,6 +213,16 @@
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         completionHandler();
     }];
+}
+
+#pragma mark - UIStateRestoration
+
+- (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder {
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
+    return YES;
 }
 
 - (void)setDoNotBackUp
@@ -215,18 +257,18 @@
 - (void)checkCommitHashes
 {
     NSDictionary *hashes = @{@"DHDBSearcher": @"ea3cca9",
-                             @"DHDBResult": @"c44cff7",
+                             @"DHDBResult": @"e3c5910",
                              @"DHDBUnifiedResult": @"b332793",
                              @"DHQueuedDB": @"0199255",
                              @"DHUnifiedQueuedDB": @"dd42266",
                              @"DHDBUnifiedOperation": @"1671a90",
-                             @"DHWebViewController": @"620be6d",
-                             @"DHWebPreferences": @"f3017eb",
-                             @"DHDocsetDownloader": @"53f55ce",
-                             @"PlatformIcons": @"414bef0",
-                             @"DHTypes": @"4e990e4",
-                             @"Types": @"8661bda",
-                             @"CSS": @"e7a1182",
+                             @"DHWebViewController": @"7704db9",
+                             @"DHWebPreferences": @"8a62071",
+                             @"DHDocsetDownloader": @"0863f2d",
+                             @"PlatformIcons": @"006c55f",
+                             @"DHTypes": @"db8874c",
+                             @"Types": @"d567e07",
+                             @"CSS": @"a43a406",
                              };
     [hashes enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSString *plistHash = [[NSBundle mainBundle] infoDictionary][[key stringByAppendingString:@"Commit"]];
@@ -243,8 +285,26 @@
     {
         return self._window;
     }
-    self._window = [[DHWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds] ];
+    self._window = [[DHWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     return self._window;
+}
+
+- (void)moveInboxContentsToDocuments {
+    
+    NSError *fileManagerError;
+    
+    NSString *inboxDirectory = [NSString stringWithFormat:@"%@/Inbox", transfersPath];
+    NSArray *inboxContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:inboxDirectory error:&fileManagerError];
+    
+    //move all the files over
+    for (int i = 0; i != [inboxContents count]; i++) {
+        NSString *oldPath = [NSString stringWithFormat:@"%@/%@", inboxDirectory, [inboxContents objectAtIndex:i]];
+        NSString *newPath = [NSString stringWithFormat:@"%@/%@", transfersPath, [inboxContents objectAtIndex:i]];
+        [[NSFileManager defaultManager] moveItemAtPath:oldPath toPath:newPath error:&fileManagerError];
+        if (fileManagerError) {
+            NSLog(@"%@",fileManagerError.localizedDescription);
+        }
+    }
 }
 
 @end

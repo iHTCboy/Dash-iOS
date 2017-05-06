@@ -1,3 +1,4 @@
+project 'Dash/Dash iOS.xcodeproj'
 platform :ios, "9.0"
 inhibit_all_warnings!
 
@@ -7,7 +8,7 @@ target "Dash" do
     # MRStopButton has support for whole sizes (their calculations ended up with non-integral frames)
     # Also overwrote pointInside: for MRCircularProgressView...
     # Removed AccessibilityValueChangeNotify because it causes VoiceOver to stall
-    pod 'KissXML'
+    pod 'KissXML', '~> 5.1.2'
     pod 'UIAlertView+Blocks'
     pod 'UIActionSheet+Blocks'
     pod 'AutoCoding'

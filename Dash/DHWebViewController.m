@@ -35,6 +35,7 @@
 
 static id singleton = nil;
 
+#pragma mark - Life Cycle
 
 - (void)viewDidLoad
 {
@@ -82,6 +83,8 @@ static id singleton = nil;
     [self updateStopReloadButtonState];
     self.didLoadOnce = YES;
 }
+
+#pragma mark - Events
 
 - (void)goBack
 {
@@ -227,6 +230,8 @@ static id singleton = nil;
     }
 }
 
+#pragma mark - UIWebViewDelegate
+
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
 //    self.title = @"Loading...";
@@ -300,6 +305,8 @@ static id singleton = nil;
         self.isRestoreScroll = NO;
     }
 }
+
+#pragma mark - Method
 
 - (void)setUpTOC
 {

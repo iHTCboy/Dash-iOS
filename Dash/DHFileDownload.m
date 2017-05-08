@@ -49,7 +49,7 @@
     }
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:[NSString stringWithFormat:@"%@%u", [url absoluteString], arc4random() % 100000]];
     configuration.timeoutIntervalForRequest = 900;
-    configuration.HTTPAdditionalHeaders = @{@"User-Agent": [[NSBundle mainBundle] bundleIdentifier]};
+    configuration.HTTPAdditionalHeaders = @{@"User-Agent": @"com.kapeli.dash.ios"};//[[NSBundle mainBundle] bundleIdentifier]};
     fileDownload.session = [NSURLSession sessionWithConfiguration:configuration delegate:fileDownload delegateQueue:nil];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:900.0];

@@ -32,6 +32,7 @@
 #import "DHRemoteProtocol.h"
 #import "BaiduMobStat.h"
 #import "DHDeviceUtil.h"
+#import "DHSpotlightUtil.h"
 
 @implementation DHAppDelegate
 
@@ -95,23 +96,6 @@
     [DHRemoteServer sharedServer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clipboardChanged:) name:UIPasteboardChangedNotification object:nil];
     return YES;
-}
-
-
-
-/**
- *  初始化百度统计SDK
- */
-- (void)startBaiduMobStat {
-    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
-    // 此处(startWithAppId之前)可以设置初始化的可选参数，具体有哪些参数，可详见BaiduMobStat.h文件，例如：
-    statTracker.shortAppVersion  = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    //    statTracker.enableDebugOn = YES;
-    [statTracker startWithAppId:@"0bf01c1f11"]; // 设置您在mtj网站上添加的app的appkey,此处AppId即为应用的appKey
-    // 其它事件
-    [statTracker logEvent:@"usermodelName" eventLabel:[DHDeviceUtil deviceModelName]];
-    [statTracker logEvent:@"systemVersion" eventLabel:[UIDevice currentDevice].systemVersion];
-    
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -179,22 +163,23 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    if(![[DHAppUpdateChecker sharedUpdateChecker] alertIfUpdatesAreScheduled])
-    {
-        [[DHAppUpdateChecker sharedUpdateChecker] backgroundCheckForUpdatesIfNeeded];
-        if(![[DHDocsetDownloader sharedDownloader] alertIfUpdatesAreScheduled])
-        {
-            [[DHDocsetDownloader sharedDownloader] backgroundCheckForUpdatesIfNeeded];
-            if(![[DHUserRepo sharedUserRepo] alertIfUpdatesAreScheduled])
-            {
-                [[DHUserRepo sharedUserRepo] backgroundCheckForUpdatesIfNeeded];
-                if(![[DHCheatRepo sharedCheatRepo] alertIfUpdatesAreScheduled])
-                {
-                    [[DHCheatRepo sharedCheatRepo] backgroundCheckForUpdatesIfNeeded];
-                }
-            }
-        }
-    }
+//    // Dash check update
+//    if(![[DHAppUpdateChecker sharedUpdateChecker] alertIfUpdatesAreScheduled])
+//    {
+//        [[DHAppUpdateChecker sharedUpdateChecker] backgroundCheckForUpdatesIfNeeded];
+//        if(![[DHDocsetDownloader sharedDownloader] alertIfUpdatesAreScheduled])
+//        {
+//            [[DHDocsetDownloader sharedDownloader] backgroundCheckForUpdatesIfNeeded];
+//            if(![[DHUserRepo sharedUserRepo] alertIfUpdatesAreScheduled])
+//            {
+//                [[DHUserRepo sharedUserRepo] backgroundCheckForUpdatesIfNeeded];
+//                if(![[DHCheatRepo sharedCheatRepo] alertIfUpdatesAreScheduled])
+//                {
+//                    [[DHCheatRepo sharedCheatRepo] backgroundCheckForUpdatesIfNeeded];
+//                }
+//            }
+//        }
+//    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -215,6 +200,58 @@
     }];
 }
 
+
+#pragma mark CoreSpotlight
+- (BOOL)application:(nonnull UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nonnull void (^)(NSArray * _Nullable))restorationHandler {
+    
+    NSString *indentifier = userActivity.userInfo[@"kCSSearchableItemActivityIdentifier"];
+    
+    DHDBResult * result = [DHSpotlightUtil fetchDHDBReshultWithIdentifier:indentifier];
+
+#ifdef DEBUG
+    NSLog(@"%@",indentifier);
+    NSLog(@"%@",result.name);
+#endif
+    
+    if (!result) {
+        return YES;
+    }
+    
+    if(isRegularHorizontalClass)
+    {
+        [[DHWebViewController sharedWebViewController] loadResult:result];
+    }
+    else
+    {
+        [[DHWebViewController sharedWebViewController] loadResult:result];
+        UINavigationController * naviVC = [UIApplication sharedApplication].keyWindow.rootViewController.childViewControllers.firstObject;
+        UIViewController * childVC = naviVC.childViewControllers.lastObject;
+        
+        if (![[childVC class] isSubclassOfClass:[DHWebViewController class]]) {
+            DHWebViewController *webViewController = [DHWebViewController sharedWebViewController];
+            webViewController.result = result;
+            [naviVC pushViewController:webViewController animated:YES];
+        }
+
+    }
+    
+    return YES;
+}
+
+
+#pragma mark - 3D Touch handle
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void(^)(BOOL succeeded))completionHandler{
+    
+    if([shortcutItem.type isEqualToString:@"3dtouch.search"]){
+        // search docset
+        [[NSNotificationCenter defaultCenter] postNotificationName:DHPrepareForURLSearch object:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DHPerformURLSearch object:@"3dtouchSearch://"];
+        });
+    }
+}
+
+
 #pragma mark - UIStateRestoration
 
 - (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder {
@@ -224,6 +261,8 @@
 - (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
     return YES;
 }
+
+#pragma mark - Method
 
 - (void)setDoNotBackUp
 {
@@ -306,5 +345,24 @@
         }
     }
 }
+
+
+#pragma mark - Other Events
+
+/**
+ *  初始化百度统计SDK
+ */
+- (void)startBaiduMobStat {
+    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+    // 此处(startWithAppId之前)可以设置初始化的可选参数，具体有哪些参数，可详见BaiduMobStat.h文件，例如：
+    statTracker.shortAppVersion  = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    //    statTracker.enableDebugOn = YES;
+    [statTracker startWithAppId:@"0bf01c1f11"]; // 设置您在mtj网站上添加的app的appkey,此处AppId即为应用的appKey
+    // 其它事件
+    [statTracker logEvent:@"usermodelName" eventLabel:[DHDeviceUtil deviceModelName]];
+    [statTracker logEvent:@"systemVersion" eventLabel:[UIDevice currentDevice].systemVersion];
+    
+}
+
 
 @end

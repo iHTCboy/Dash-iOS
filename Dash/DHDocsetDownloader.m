@@ -554,7 +554,7 @@ static id singleton = nil;
                     if(xmlURL)
                     {
                         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:xmlURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:90.0f];
-                        [request setValue:[[NSBundle mainBundle] bundleIdentifier] forHTTPHeaderField:@"User-Agent"];
+                        [request setValue:@"com.kapeli.dash.ios" forHTTPHeaderField:@"User-Agent"];//[[NSBundle mainBundle] bundleIdentifier] forHTTPHeaderField:@"User-Agent"];
                         NSURLResponse *response = nil;
                         NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&workingError];
                         if(data && !workingError)

@@ -25,10 +25,13 @@
 #import "DHDocsetDownloader.h"
 #import "DHRemoteBrowser.h"
 #import "DHWebView.h"
+#import "DHSpotlightUtil.h"
 
 static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
 
 @implementation DHDocsetBrowser
+
+#pragma mark - Life Cycle
 
 - (void)viewDidLoad
 {
@@ -46,6 +49,13 @@ static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
     self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performURLSearch:) name:DHPerformURLSearch object:nil];
+    
+    // iOS 9 Core Spotlight
+    if ([UIDevice currentDevice].systemVersion.floatValue > 9.0) {
+        
+        // create Spotlight search
+        [DHSpotlightUtil sartCreateAllDocset:[DHDocsetManager sharedManager].docsets];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -97,6 +107,8 @@ static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
     [self.searchController viewWillDisappear];
 }
 
+#pragma mark - Events
+
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
 {
     if(previousTraitCollection)
@@ -115,6 +127,10 @@ static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
     if([url hasCaseInsensitivePrefix:@"dash://"])
     {
         query = [url substringFromIndex:@"dash://".length];
+    }
+    else if ([url hasCaseInsensitivePrefix:@"3dtouchSearch://"])
+    {
+        query = @"3dtouchSearch://";
     }
     else if([url hasCaseInsensitivePrefix:@"dash-plugin://"])
     {
@@ -175,20 +191,24 @@ static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
     [self.searchDisplayController.searchBar resignFirstResponder];
     if((query && query.length) || keywordDocsets.count)
     {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.00 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if(keywordDocsets.count)
             {
                 self.keyDocsets = [NSMutableArray arrayWithArray:[keywordDocsets array]];
             }
             [self.searchDisplayController setActive:YES animated:NO];
-            self.searchDisplayController.searchBar.text = query;
-            if(!query.length)
+            if (![query isEqualToString:@"3dtouchSearch://"]) {
+                self.searchDisplayController.searchBar.text = query;
+            }
+            if([query isEqualToString:@"3dtouchSearch://"] || !query.length)
             {
                 [self.searchDisplayController.searchBar becomeFirstResponder];
             }
         });
     }
 }
+
+#pragma mark -  DZNEmptyDelegate
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
@@ -239,6 +259,8 @@ static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
     [self openSettings:self];
 }
 
+#pragma mark - Docsets Update NSNotification
+
 - (void)reload:(NSNotification *)notification
 {
     if(self.isSearching)
@@ -259,6 +281,8 @@ static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
         [self.tableView selectRowAtIndexPath:toSelect animated:NO scrollPosition:UITableViewScrollPositionNone];
     }
 }
+
+#pragma mark - UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -293,11 +317,11 @@ static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
 {
     if([DHRemoteServer sharedServer].remotes.count && !self.isEditing)
     {
-        self.navigationItem.title = (self.sections.count > 1 || [DHDocsetManager sharedManager].docsets.count) ? @"Docsets & Remotes" : @"Remotes";
+        self.navigationItem.title = (self.sections.count > 1 || [DHDocsetManager sharedManager].docsets.count) ? @"iDocuments & Remotes" : @"Remotes";
     }
     else
     {
-        self.navigationItem.title = @"Docsets";
+        self.navigationItem.title = @"iDocuments";
     }
 }
 
@@ -457,6 +481,8 @@ static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
     self.tableView.tableFooterView = (self.sections.count) ? nil : [UIView new];
 }
 
+#pragma mark - UISearchDisplayDelegate
+
 - (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
 {
     if(self.keyDocsets)
@@ -514,10 +540,14 @@ static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
     [self updateTitle];
 }
 
+#pragma mark - Orientation NSNotification
+
 - (void)orientationChanged:(id)sender
 {
     [self.tableView reloadEmptyDataSet];
 }
+
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -573,6 +603,8 @@ static NSAttributedString *_titleBarItemAttributedStringTemplate = nil;
         [[self.splitViewController.viewControllers.lastObject navigationItem] setHidesBackButton:YES];
     }
 }
+
+#pragma mark - ViewStatus
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {

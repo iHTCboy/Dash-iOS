@@ -22,6 +22,8 @@
 
 @implementation DHEntryBrowser
 
+#pragma mark - Life Cycle
+
 - (void)viewDidLoad
 {
     if(!self.docset)
@@ -127,6 +129,8 @@
     [self.searchController viewDidAppear];
 }
 
+#pragma mark - UITableviewDelegate
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -185,6 +189,8 @@
         [self performSegueWithIdentifier:@"DHWebViewSegue" sender:self];
     }
 }
+
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

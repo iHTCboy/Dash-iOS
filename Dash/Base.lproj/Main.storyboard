@@ -56,7 +56,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBi-q0-XGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2322" y="404"/>
+            <point key="canvasLocation" x="2617" y="690"/>
         </scene>
         <!--WebView-->
         <scene sceneID="yUG-lL-AsK">
@@ -93,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="246" y="636"/>
+            <point key="canvasLocation" x="1003" y="1625"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -107,7 +107,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-536.71875" y="-544.921875"/>
+            <point key="canvasLocation" x="-506" y="-545"/>
         </scene>
         <!--Settings-->
         <scene sceneID="PgB-42-Mhn">
@@ -278,7 +278,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmo-gt-gw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586" y="-1657"/>
+            <point key="canvasLocation" x="2009" y="-1295"/>
         </scene>
         <!--Docset Browser-->
         <scene sceneID="smW-Zh-WAh">
@@ -340,7 +340,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="918" y="-545"/>
+            <point key="canvasLocation" x="1003" y="-545"/>
         </scene>
         <!--Type Browser-->
         <scene sceneID="0HO-gO-dJg">
@@ -393,7 +393,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1743" y="-451"/>
+            <point key="canvasLocation" x="2009" y="-545"/>
         </scene>
         <!--Entry Browser-->
         <scene sceneID="hsl-sd-m15">
@@ -445,7 +445,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2556" y="-470"/>
+            <point key="canvasLocation" x="2916" y="-545"/>
         </scene>
         <!--Remote Browser-->
         <scene sceneID="gnf-QR-1ra">
@@ -479,7 +479,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUb-q5-H6p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1383" y="353"/>
+            <point key="canvasLocation" x="-6" y="690"/>
         </scene>
         <!--Main Docsets-->
         <scene sceneID="j1n-HE-PZF">
@@ -526,7 +526,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2445" y="-3288"/>
+            <point key="canvasLocation" x="3893" y="-2976"/>
         </scene>
         <!--User Contributed Docsets-->
         <scene sceneID="okr-5a-bHb">
@@ -573,7 +573,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2445" y="-2618"/>
+            <point key="canvasLocation" x="3893" y="-854"/>
         </scene>
         <!--Transfer Docsets-->
         <scene sceneID="dSW-F9-RBB">
@@ -599,7 +599,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ar8-em-khk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2468" y="-1204"/>
+            <point key="canvasLocation" x="3893" y="-1593"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -615,7 +615,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-539.453125" y="588.28125"/>
+            <point key="canvasLocation" x="-1088" y="690"/>
         </scene>
         <!--ToC Browser-->
         <scene sceneID="krs-xc-y3h">
@@ -674,7 +674,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1999" y="1202"/>
+            <point key="canvasLocation" x="6330" y="561"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lHw-UH-CNc">
@@ -692,7 +692,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QwS-fp-JCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1177" y="1202"/>
+            <point key="canvasLocation" x="5352" y="561"/>
         </scene>
         <!--Cheat Sheets-->
         <scene sceneID="kGo-MS-1Iv">
@@ -739,7 +739,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2445" y="-1928"/>
+            <point key="canvasLocation" x="3893" y="-2291"/>
         </scene>
     </scenes>
     <resources>
@@ -749,11 +749,11 @@
         <image name="user_repo" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GKi-kA-LjT"/>
-        <segue reference="ljv-Qq-slv"/>
-        <segue reference="UMU-KR-a0h"/>
-        <segue reference="tZ0-kY-m9B"/>
+        <segue reference="BAb-G2-tNG"/>
+        <segue reference="cEQ-Zo-INv"/>
+        <segue reference="q6b-SO-d4X"/>
         <segue reference="z3k-ky-jyi"/>
         <segue reference="vh9-ti-qTq"/>
+        <segue reference="UMU-KR-a0h"/>
     </inferredMetricsTieBreakers>
 </document>

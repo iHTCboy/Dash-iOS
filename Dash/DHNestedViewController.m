@@ -20,6 +20,8 @@
 
 @implementation DHNestedViewController
 
+#pragma mark -Life Cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -86,6 +88,8 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - UITableviewDelegate
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -151,6 +155,8 @@
         }
     }
 }
+
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

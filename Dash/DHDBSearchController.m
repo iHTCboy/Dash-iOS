@@ -24,6 +24,8 @@
 
 @implementation DHDBSearchController
 
+#pragma mark - Life Cycle
+
 + (DHDBSearchController *)searchControllerWithDocsets:(NSArray *)docsets typeLimit:(NSString *)typeLimit viewController:(UIViewController *)viewController;
 {
     DHDBSearchController *controller = [[DHDBSearchController alloc] init];
@@ -83,6 +85,8 @@
     displayController.searchResultsDataSource = self;
     displayController.searchResultsDelegate = self;
 }
+
+#pragma mark - UISearchDisplayDelegate
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
 {
@@ -177,6 +181,8 @@
     self.searcher = nil;
 }
 
+#pragma mark - DHDBSearcherDelegate
+
 - (void)searcher:(DHDBSearcher *)searcher foundResults:(NSArray *)results hasMore:(BOOL)hasMore
 {
     if(searcher == self.searcher)
@@ -206,6 +212,8 @@
     }
 }
 
+#pragma mark - Segue
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([[segue identifier] isEqualToString:@"DHNestedSegue"])
@@ -221,6 +229,8 @@
         webViewController.result = result;
     }
 }
+
+#pragma mark - UITableViewDelegate.
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -309,6 +319,8 @@
         cell.textLabel.attributedText = string;
     }
 }
+
+#pragma mark - ViewStatus
 
 - (void)encodeRestorableStateWithCoder:(NSCoder *)coder
 {

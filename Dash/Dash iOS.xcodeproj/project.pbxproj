@@ -80,7 +80,7 @@
 		43B0956F19BFDBDC00F8611B /* DHDocsetDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B0956E19BFDBDC00F8611B /* DHDocsetDownloader.m */; };
 		43B98F6419EE740F00C46BD9 /* msdn.js in Resources */ = {isa = PBXBuildFile; fileRef = 43B98F6219EE740F00C46BD9 /* msdn.js */; };
 		43BB043919ED07DD000FBC0D /* DHJavaScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BB043819ED07DD000FBC0D /* DHJavaScript.m */; };
-		43BB043F19ED0B19000FBC0D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BB043E19ED0B19000FBC0D /* JavaScriptCore.framework */; };
+		43BB043F19ED0B19000FBC0D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BB043E19ED0B19000FBC0D /* JavaScriptCore.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		43BB044219ED0C86000FBC0D /* cocoa.js in Resources */ = {isa = PBXBuildFile; fileRef = 43BB044019ED0C86000FBC0D /* cocoa.js */; };
 		43BB044619ED1BB8000FBC0D /* NSObject+DHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BB044519ED1BB8000FBC0D /* NSObject+DHUtils.m */; };
 		43BB044D19ED3E78000FBC0D /* ruby.js in Resources */ = {isa = PBXBuildFile; fileRef = 43BB044B19ED3E78000FBC0D /* ruby.js */; };
@@ -125,6 +125,8 @@
 		43FD2F0219BB8D87007E594D /* DHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FD2F0119BB8D87007E594D /* DHWebViewController.m */; };
 		43FD2F0419BB8D87007E594D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43FD2F0319BB8D87007E594D /* Images.xcassets */; };
 		45D28F8ABD1FC392B1930467 /* libPods-Dash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2364AD2032B0714BCD2265 /* libPods-Dash.a */; };
+		6D1D94271EBEBBA20016ECD3 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1D94261EBEBBA20016ECD3 /* CoreSpotlight.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6D1D942A1EBEBC320016ECD3 /* DHSpotlightUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D94291EBEBC320016ECD3 /* DHSpotlightUtil.m */; };
 		6D4E0A111EBE1A370019C6A0 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4E0A101EBE1A370019C6A0 /* libBaiduMobStat.a */; };
 		6D4E0A141EBE1A440019C6A0 /* DHDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E0A131EBE1A440019C6A0 /* DHDeviceUtil.m */; };
 		6D4E0A181EBE1A900019C6A0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4E0A171EBE1A900019C6A0 /* SystemConfiguration.framework */; };
@@ -334,6 +336,9 @@
 		43FD2F0019BB8D87007E594D /* DHWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHWebViewController.h; sourceTree = "<group>"; };
 		43FD2F0119BB8D87007E594D /* DHWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHWebViewController.m; sourceTree = "<group>"; };
 		43FD2F0319BB8D87007E594D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6D1D94261EBEBBA20016ECD3 /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
+		6D1D94281EBEBC320016ECD3 /* DHSpotlightUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHSpotlightUtil.h; sourceTree = "<group>"; };
+		6D1D94291EBEBC320016ECD3 /* DHSpotlightUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHSpotlightUtil.m; sourceTree = "<group>"; };
 		6D4E0A0A1EBE19B80019C6A0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		6D4E0A0B1EBE19B80019C6A0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		6D4E0A0C1EBE19BD0019C6A0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -357,6 +362,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D1D94271EBEBBA20016ECD3 /* CoreSpotlight.framework in Frameworks */,
 				6D4E0A1F1EBE1AD50019C6A0 /* libc++.tbd in Frameworks */,
 				6D4E0A1D1EBE1AC30019C6A0 /* Security.framework in Frameworks */,
 				6D4E0A1B1EBE1AA70019C6A0 /* CoreTelephony.framework in Frameworks */,
@@ -652,6 +658,8 @@
 				43DCAEB71A9C3C8500A28A95 /* NSData+DHUtils.m */,
 				6D4E0A121EBE1A440019C6A0 /* DHDeviceUtil.h */,
 				6D4E0A131EBE1A440019C6A0 /* DHDeviceUtil.m */,
+				6D1D94281EBEBC320016ECD3 /* DHSpotlightUtil.h */,
+				6D1D94291EBEBC320016ECD3 /* DHSpotlightUtil.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -813,6 +821,7 @@
 		43FD2EE419BB8D87007E594D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D1D94261EBEBBA20016ECD3 /* CoreSpotlight.framework */,
 				6D4E0A1E1EBE1AD50019C6A0 /* libc++.tbd */,
 				6D4E0A1C1EBE1AC30019C6A0 /* Security.framework */,
 				6D4E0A191EBE1A9E0019C6A0 /* CoreLocation.framework */,
@@ -839,10 +848,10 @@
 				438B06DE19FFA2DF009A539D /* Launch.xib */,
 				43FD2EF419BB8D87007E594D /* DHAppDelegate.h */,
 				43FD2EF519BB8D87007E594D /* DHAppDelegate.m */,
-				4303A3AF19C657FE00A7CD85 /* Database */,
-				438525E919C1509A002BAFD1 /* Searcher */,
-				437AD41819E26F0A00BA0FE4 /* WebView */,
 				4341A1F319BFE6D200AD164A /* Browser */,
+				437AD41819E26F0A00BA0FE4 /* WebView */,
+				438525E919C1509A002BAFD1 /* Searcher */,
+				4303A3AF19C657FE00A7CD85 /* Database */,
 				4341A1F219BFE6CA00AD164A /* Preferences */,
 				4341A1F119BFE6B500AD164A /* Repos */,
 				43573F751A997EB0000E6F2D /* Remote */,
@@ -1092,6 +1101,7 @@
 				432321E21AA1BBF70045BA77 /* DHRemoteBrowser.m in Sources */,
 				4303A3C119C6584F00A7CD85 /* FMDatabaseQueue.m in Sources */,
 				43FD2EF219BB8D87007E594D /* main.m in Sources */,
+				6D1D942A1EBEBC320016ECD3 /* DHSpotlightUtil.m in Sources */,
 				43D28EBB19F97D5500FDC5EE /* DHTocBrowser.m in Sources */,
 				43B0956F19BFDBDC00F8611B /* DHDocsetDownloader.m in Sources */,
 				43F7527319CD1C2000D76F58 /* UIButton+DHUtils.m in Sources */,
